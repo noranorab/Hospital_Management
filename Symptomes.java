@@ -1,0 +1,6 @@
+package Gestion;
+
+public enum Symptomes {
+	DIABETE, PROBLEMES_VENTRES, PROBLEMES_ARTICULATIONS, PROBLEMES_COEUR
+	
+}

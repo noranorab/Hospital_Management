@@ -1,41 +1,52 @@
-package Gestion;
+package projet;
+import java.util.*;
 
-public class Patient{
-	private String etatPatient;
-	private String nom;
-	private int matricule;
-	private String nomMaladie;
-	
-	Patient(){}
-	
-	public String getEtatPatient() {
-		return etatPatient;
-	}
-	public void setEtatPatient(String etatPatient) {
-		this.etatPatient = etatPatient;
-	}
 
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public int getMatricule() {
+public class Patient extends Personne {
+	private int  matricule;
+	/*private maladie maladie;
+	private medecin medecin;*/
+	private EtatPatient
+	private Date dateEntree ;
+	private Date dateSortiePrevue;
+	private Date dateSortieEffective;
+	private int chambre;
+    public patient(String nom,String prenom ,int matricule, Date dateEntree,int ch, Date dateSortiePrevue) {
+    	super(nom,prenom);
+    	this.matricule = matricule;
+		/*this.maladie=maladie;
+		this.medecin=medecin;*/
+		this.chambre = ch;
+		this.dateEntre = dateEntree;
+		this.dateSortiePrevue = dateSortiePrevue;
+		this.dateSortieEffective = null;
+		
+    }
+    public int getmatricule() {
 		return matricule;
 	}
 
-	public void setMatricule(int matricule) {
+	public void setmatricule(int matricule) {
 		this.matricule = matricule;
 	}
-	
-	//affecter patient selon maladie a un medecin selon specialite
-	
-	
-	
-	
-	
+	 public int getchambre() {
+			return chambre ;
+		}
 
+	public void setchambre(int chambre) {
+			this.chambre = chambre;
+	}
+	public Date getDateEntree(Patient patient) {
+		return getDateEntree;
+	}
+	@Override
+	public String toString() {
+		return this.getmatricule() + "_" + super.toString();
+	}
+	public EtatPatient etatPatient() {
+		if(this.dateSortieEffective!=null) return EtatPatient.GUERI;
+		else if(this.dateSortiePrevue.after(new Date())) return EtatPatient.HOSPITALISE;
+		else return EtatPatient.NON_HOSPITALISE;
+	}
 }
+

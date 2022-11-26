@@ -8,51 +8,52 @@ import java.util.Map;
 
 public class Maladie {
 	private String nomMaladie;
+	private int matriculeMedicament;
+	private String EtatMaladie;
 	private Map dictMaladie = new HashMap();
-	private List maladies = new ArrayList();
-	private List medicaments = new ArrayList();
+
 	
 	Maladie(){}
 	Maladie(String nom){
 		this.nomMaladie = nom;
 	}
-	
-	//dosage du medicament selon etat du patient --> consultation
-	public int dosage(int idMedicament, Patient patient) {
-		//dosage selon maladie
-		Medicament medicament = rechercherMedicament(idMedicament);
-		Maladie maladie = (Maladie) this.dictMaladie.get(idMedicament);
-		if (EtatPatient.GUERI != null) return 500;
-		if (EtatPatient.MALADE != null) return 1000;
-		if (EtatPatient.SOUFFRANT != null) return 1500;
-		return 0;
-		
+	public String getNomMaladie() {
+		return this.nomMaladie;
 	}
 	
-	public Maladie rechercherMaladie(int matricule) {
-		return null;
+	public String getEtatMaladie() {
+		return EtatMaladie;
+	}
+	public void setEtatMaladie(String etatMaladie) {
+		EtatMaladie = etatMaladie;
+	}
+	public void setNomMaladie(String nomMaladie) {
+		this.nomMaladie = nomMaladie;
 	}
 	
-	public Medicament rechercherMedicament(int matricule) {
-		return null;
+	//avoir le médicmanet qui soigne la maladie 
+	public Medicament getMedicament(Maladie maladie) {
+		return (Medicament) dictMaladie.get(maladie);
 	}
-	public void ajouterMaladie(String nomMaladie) {
-		List listMaladie = this.maladies;
-		Iterator it = listMaladie.iterator();
-		Boolean contientMaladie = false;
-		while (it.hasNext()) {
-			if (((Maladie) it.next()).nomMaladie.equals(nomMaladie)) {
-				contientMaladie = true;
-				break;
-			}
-		}
-		if (contientMaladie == false) {
-			listMaladie.add(nomMaladie);
+	
+	public String consulterMaladie(Maladie maladie) {
+		return "nom de la maladie :" + this.nomMaladie + '\n' +
+				"medicament : " + this.matriculeMedicament + '\n' +
+				"EtatMaladie : " + this.EtatMaladie;
+	}
+	
+	public void ajouteMaladie(Maladie maladie) {
+		if (!(this.dictMaladie.containsKey(maladie))) {
+			this.dictMaladie.put(maladie, this.matriculeMedicament);
 		}else {
-			System.out.println("Maladie existante!");
+			System.out.println("cette maladie existe");
 		}
 		
 	}
+	
+	
+	
+
 	
 	
 	

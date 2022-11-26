@@ -1,5 +1,7 @@
-package Gestion;
+package projet;
 
-public enum EtatPatient {
-	GUERI, MALADE, SOUFFRANT
+
+public enum Etat_patient {
+	GUERI, HOSPITALISE, NON_HOSPITALISE
 }
+		 

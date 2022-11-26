@@ -8,7 +8,7 @@ public class Medecin {
 	private String nom;
 	private String contact;
 	private String specialite;
-	private List patients = new ArrayList();
+	private List<Patient> patients = new ArrayList();
 	//private
 	
 	Medecin(){}
@@ -68,7 +68,12 @@ public class Medecin {
 	}
 	
 	//methode pour affecter medicin à patient
-	public void affecter(Patient patient) {
+	public void ajouterPatient(Patient patient) {
+		if (!(patients.contains(patient))) {
+			patients.add(patient);
+		}else {
+			System.out.println("patient existe");
+		}
 		
 	}
 	
