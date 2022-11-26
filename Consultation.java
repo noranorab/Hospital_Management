@@ -6,14 +6,10 @@ import java.util.List;
 import java.util.Objects;
 import java.util.TimeZone;
 
-import Gestion.Consultation1;
-import Gestion.Medecin;
-import Gestion.Patient;
-import Gestion.Specialite;
-import Gestion.Symptomes;
+
 
 public class Consultation implements Comparable{
-	private int matricule = 0;
+    private int matricule = 0;
     private Patient patient;
     private Medecin medecin;
     private Date date;
