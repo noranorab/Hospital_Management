@@ -1,18 +1,21 @@
 package Gestion;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Medecin {
 	private int matricule;
 	private String nom;
 	private String contact;
-	private String specialite;
-	private List<Patient> patients = new ArrayList();
+	private Specialite specialite;
+	private List<Patient> patients = new ArrayList<Patient>();
+	private List<Consultation> consultation = new ArrayList<Consultation>();
 	//private
 	
+	
 	Medecin(){}
-	Medecin(int matricule){
+	Medecin(int matricule, String nom, String contact,Boolean estDispo, Specialite specialite){
 		this.matricule = matricule;
 		this.nom = nom;
 		this.contact = contact;
@@ -44,21 +47,37 @@ public class Medecin {
 		return this.contact;
 	}
 
-	public String getSpecialite() {
+	public Specialite getSpecialite() {
 		return specialite;
 	}
-	public void setSpecialite(String specialite) {
+	public void setSpecialite(Specialite specialite) {
 		this.specialite = specialite;
 	}
+	
 	public Patient rechercherPatient(int matricule) {
+		int a = 0;
+		for (Patient m: this.patients) {
+			if (m.getMatricule() == matricule) {
+				return m;
+			}
+		}
+		return null;
+	}
+	
+	public Consultation rechercherConsultation(Consultation consul) {
+		for (Consultation consultation: this.consultation) {
+			if (consultation.compareTo(consul) == 0) {
+				return consultation;
+			}
+		}
 		return null;
 	}
 	
 	//permet de voir informations sur patient par son matricule
 	public void consulterPatient(int matricule) {
-		System.out.println("Nom du patient : " + rechercherPatient(matricule).getNom());
-		System.out.println("Matricule du patient : " + rechercherPatient(matricule).getMatricule());
-		System.out.println("Etat du patient : " + rechercherPatient(matricule).getEtatPatient());
+		System.out.println("Nom du patient : " + rechercherPatient(matricule).getNom() + '\n' +
+		                   "Matricule du patient : " + rechercherPatient(matricule).getMatricule()
+		                   );
 	}
 	//toString
 	@Override
@@ -67,13 +86,22 @@ public class Medecin {
 				+ this.contact;
 	}
 	
-	//methode pour affecter medicin à patient
+	//methode pour affecter medicin à patient selon maladie patient
 	public void ajouterPatient(Patient patient) {
 		if (!(patients.contains(patient))) {
 			patients.add(patient);
 		}else {
 			System.out.println("patient existe");
 		}
+		
+	}
+	public void ajouterConsultation(Consultation consul) {
+		if (!(this.consultation.contains(consul))) {
+			this.consultation.add(consul);
+		}else {
+			System.out.println("consultation déjà programmée");
+		}
+		// TODO Auto-generated method stub
 		
 	}
 	
