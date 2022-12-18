@@ -3,11 +3,13 @@ package projet;
 public class Personne {
 	String nom;
 	String prenom;
+	String numeroTelephone;
 	
 	public Personne() {}
-	public Personne(String nom, String prenom) {
+	public Personne(String nom, String prenom, String numero) {
 		this.nom=nom;
 		this.prenom=prenom;
+		this.numeroTelephone = numero;
 	}
 
 	public String getNom() {
@@ -24,7 +26,14 @@ public class Personne {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+	
+	public void setNumeroTelephone(String num) {
+		this.numeroTelephone = num;
+	}
 		
+	public void getNumeroTelephone() {
+		return this.numeroTelephone;
+	}
 		
 	@Override
 	public String toString() {
