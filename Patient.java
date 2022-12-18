@@ -1,52 +1,47 @@
 package projet;
-import java.util.*;
 
+public class Patient extends Personne{
+	private int matricule;
+	private Symptomes symptomes;
+	
+	Patient(){}
+	Patient(String nom, String prenom, int matricule,Symptomes symptomes, String numero){
+		this.matricule = matricule;
+		this.symptomes = symptomes;
+		this.nom = super.nom;
+		this.prenom = super.prenom;
+		this.etatPatient = etatPatient;
+		this.numero = super.numeroTelephone;
+	}
+	
+	public EtatPatient getEtatPatient() {
+		return this.etatPatient;
+	}
+	public void setEtatPatient(EtatPatient etatPatient) {
+		this.etatPatient = etatPatient;
+	}
 
-public class Patient extends Personne {
-	private int  matricule;
-	/*private maladie maladie;
-	private medecin medecin;*/
-	private EtatPatient
-	private Date dateEntree ;
-	private Date dateSortiePrevue;
-	private Date dateSortieEffective;
-	private int chambre;
-    public patient(String nom,String prenom ,int matricule, Date dateEntree,int ch, Date dateSortiePrevue) {
-    	super(nom,prenom);
-    	this.matricule = matricule;
-		/*this.maladie=maladie;
-		this.medecin=medecin;*/
-		this.chambre = ch;
-		this.dateEntre = dateEntree;
-		this.dateSortiePrevue = dateSortiePrevue;
-		this.dateSortieEffective = null;
-		
-    }
-    public int getmatricule() {
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public int getMatricule() {
 		return matricule;
 	}
 
-	public void setmatricule(int matricule) {
+	public void setMatricule(int matricule) {
 		this.matricule = matricule;
 	}
-	 public int getchambre() {
-			return chambre ;
-		}
-
-	public void setchambre(int chambre) {
-			this.chambre = chambre;
+	public Symptomes getSymptomes() {
+		return this.symptomes;
 	}
-	public Date getDateEntree(Patient patient) {
-		return getDateEntree;
-	}
-	@Override
-	public String toString() {
-		return this.getmatricule() + "_" + super.toString();
-	}
-	public EtatPatient etatPatient() {
-		if(this.dateSortieEffective!=null) return EtatPatient.GUERI;
-		else if(this.dateSortiePrevue.after(new Date())) return EtatPatient.HOSPITALISE;
-		else return EtatPatient.NON_HOSPITALISE;
+	
+	public void setSymptomes(Symptomes symptomes) {
+		this.symptomes = symptomes;
 	}
 }
-
+	
